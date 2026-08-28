@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ChatSpace</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="toast"></div>
+
+  <section id="authView" class="auth-shell">
+    <div class="auth-card">
+      <div class="brand big">ChatSpace</div>
+      <p class="muted">Simple, fast, real-time messaging.</p>
+
+      <div class="auth-tabs">
+        <button class="tab active" data-mode="login">Login</button>
+        <button class="tab" data-mode="register">Create account</button>
+      </div>
+
+      <form id="authForm">
+        <label>Username
+          <input id="username" required autocomplete="username" placeholder="your_username">
+        </label>
+
+        <label id="displayNameWrap" class="hidden">Display name
+          <input id="displayName" autocomplete="name" placeholder="Your name">
+        </label>
+
+        <label>Password
+          <input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="••••••••">
+        </label>
+
+        <button class="primary full" type="submit" id="authSubmit">Login</button>
+        <p id="authError" class="error"></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="appView" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="side-head">
+        <div>
+          <div class="brand">ChatSpace</div>
+          <div id="myName" class="muted small"></div>
+        </div>
+        <button id="logoutBtn" class="icon-btn" title="Logout">↪</button>
+      </div>
+
+      <div class="search-wrap">
+        <input id="searchInput" placeholder="Search people...">
+      </div>
+
+      <div id="peopleList" class="people-list"></div>
+    </aside>
+
+    <main class="chat-panel">
+      <header class="chat-head">
+        <button id="backBtn" class="back-btn">‹</button>
+        <div id="chatAvatar" class="avatar">?</div>
+        <div class="chat-title">
+          <strong id="chatName">Select a person</strong>
+          <span id="chatStatus" class="muted small">Start a conversation</span>
+        </div>
+      </header>
+
+      <div id="messages" class="messages">
+        <div class="empty-state">
+          <div class="empty-icon">💬</div>
+          <h2>Your messages</h2>
+          <p>Choose someone from the left to start chatting.</p>
+        </div>
+      </div>
+
+      <form id="composer" class="composer hidden">
+        <input id="messageInput" maxlength="4000" autocomplete="off" placeholder="Write a message...">
+        <button class="send-btn" type="submit">Send</button>
+      </form>
+    </main>
+  </section>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
